@@ -1,0 +1,44 @@
+.wrapper{
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.jumbotron{
+    background-color:rgb(175, 53, 175);
+}
+
+.hero-text{
+    font-size: 2em;
+    text-align: center;
+    color: white;
+}
+
+.row{
+    display: flex;
+}
+
+.column{
+    position: relative;
+    text-align: center;
+    color: white;
+    font-size: 3em;
+    flex: 33.33%;
+    padding: 5px;
+    max-width: 33.33%;
+    max-height: 33.33%;
+}
+
+.text{
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
