@@ -9,15 +9,24 @@ import { EnvironmentUrlService } from './environment-url.service';
 */ 
 export class RepositoryService {
 
-  constructor(private http: HttpClient, private envURL: EnvironmentUrlService) {}
+  private headers : HttpHeaders;
+  private accessPointUrl = "http://localhost:53452/api/expense/";
 
-  public getData(route : string){
-    return this.http.get(this.createCompleteRoute(route, this.envURL.urlAdress))
+  constructor(private http: HttpClient, private envURL: EnvironmentUrlService) {
+    this.headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'})
   }
 
-  public create(route : string, body){
-    return this.http.post(this.createCompleteRoute(route, this.envURL.urlAdress),
-                          body, 
+  public getData(){
+    return this.http.get(this.accessPointUrl, {headers: this.headers});
+  }
+
+/*   public getSingleData(route : string, id : number){
+    return this.http.get(this.accessPointUrl + '{{id}}', {headers: this.headers})
+  } */
+
+  public create(payload : string){
+    return this.http.post(this.accessPointUrl,
+                          payload, 
                           this.generateHeaders());
   }
 
@@ -37,7 +46,7 @@ export class RepositoryService {
 
   private generateHeaders(){
     return{
-      headers: new HttpHeaders({'Content-type':'application/json'})
+      headers: new HttpHeaders({'Content-type':'application/json; charset=utf-8'})
     }
   }
 }

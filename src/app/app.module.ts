@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms'
 import { AppComponent } from './app.component';
 import { EnvironmentUrlService } from './Shared/services/environment-url.service';
 import { RepositoryService } from './Shared/services/repository.service';
@@ -11,6 +12,7 @@ import { ExpenseListComponent } from './Expense/expense-list/expense-list.compon
 import { MenuComponent } from './menu/menu/menu.component';
 import { TravelComponent } from './travel/travel.component';
 import { FooterComponent } from './footer/footer.component';
+import { AddOrUpdateBudgetComponent } from './add-or-update-budget/add-or-update-budget.component';
 
 @NgModule({
   declarations: [
@@ -18,10 +20,12 @@ import { FooterComponent } from './footer/footer.component';
     ExpenseListComponent,
     MenuComponent,
     TravelComponent,
-    FooterComponent
+    FooterComponent,
+    AddOrUpdateBudgetComponent,
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpClientModule,
     RouterModule.forRoot([
       {path:'home', component: MenuComponent},

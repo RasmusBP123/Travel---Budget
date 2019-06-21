@@ -17,11 +17,16 @@ export class ExpenseListComponent implements OnInit {
     this.getAllExpenses()
   }
 
+  accessPointUrl = "http://localhost:53452/api/expense/";
+
   public getAllExpenses(){
-    let apiAddress = 'api/expense/';
-    this.repository.getData(apiAddress).subscribe(
+    this.repository.getData().subscribe(
       data => {
         this.expenses = data as Expense[];
       });
   }
+
+/*   public createExpense(){
+    this.repository.create(this.accessPointUrl, this.expenses).subscribe();
+  } */
 }

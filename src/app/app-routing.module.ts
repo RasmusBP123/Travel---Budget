@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { TravelComponent } from './travel/travel.component';
-import { MenuComponent } from './menu/menu/menu.component';
 import { ExpenseListComponent } from './Expense/expense-list/expense-list.component';
+import { AddOrUpdateBudgetComponent } from './add-or-update-budget/add-or-update-budget.component';
 
 const routes: Routes = [
   {path:'budget', component: ExpenseListComponent},
-  {path:'', component: MenuComponent},
+  {path:'add', component: AddOrUpdateBudgetComponent},
+  {path:'', component: TravelComponent},
   {path:'travel', component: TravelComponent},
 ];
 
