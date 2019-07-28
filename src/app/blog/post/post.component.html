@@ -1,0 +1,22 @@
+<div class="post-container" *ngIf='post'>
+  <div class="post">
+    <div class="headline">
+    <h3>{{post.title}}</h3>
+    <hr>
+  </div>
+  <div class="date">
+      <p>Written by Rasmus Bak Petersen &#9679; {{post.postedAt | date}}</p>
+    </div>
+    <div class="content">
+      <p>{{post.textInput}}</p>
+    </div>
+  </div>
+  <hr>
+  <div class="button-container">
+    <button class="deleteButton" type="button" (click)='deletePost(post.id)'>Delete</button>
+    <div class="like-container">
+    <p class="like-notification" *ngIf='isPressed == true' @liked>+{{numberOfLikes}}</p>
+    <button class="likeButton" (click)='likes()'> {{numberOfLikes}}</button>
+    </div>
+  </div>
+</div>

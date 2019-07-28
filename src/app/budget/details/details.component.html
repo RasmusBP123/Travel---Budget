@@ -1,0 +1,22 @@
+ <div class="details-container"> 
+    <h5 class="headline actions-h5">Expense</h5>
+<div class = "text-container" *ngIf = 'expense' (change) = 'expense'>
+<div class = "block">
+      <label> Id </label>
+    <input type = "text" value = "{{expense.id}}" [(ngModel)] = "expense.id" >
+  </div>
+  <div class = "block">
+  <label>Name </label>
+  <input type = "text" value = "{{expense.name}}" [(ngModel)] = "expense.name" >
+</div>
+<div class = "block">
+  <label>Cost </label>
+  <input type = "text" value = "{{expense.cost}}" [(ngModel)] = "expense.cost">
+</div>
+</div>
+<div    class = "bottom-button-container" *ngIf = "!isHidden && expense">
+<button (click) = "patchExpenseFromChild()" class = "bottom-button update">Update</button>
+    &nbsp; <!-- Creates spacing between two buttons-->
+    <button (click) = "deleteExpenseFromChild()" class = "bottom-button danger">Delete</button>
+  </div> 
+</div>

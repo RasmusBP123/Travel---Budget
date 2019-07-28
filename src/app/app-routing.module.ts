@@ -1,15 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { TravelComponent } from './travel/travel.component';
-import { ExpenseListComponent } from './Expense/expense-list/expense-list.component';
-import { AddOrUpdateBudgetComponent } from './add-or-update-budget/add-or-update-budget.component';
+import { ErrorComponent } from './server500/error.component';
 
 const routes: Routes = [
-  {path:'budget', component: ExpenseListComponent},
-  {path:'add', component: AddOrUpdateBudgetComponent},
   {path:'', component: TravelComponent},
   {path:'travel', component: TravelComponent},
-];
+  {path:'blog', loadChildren: () => import('./blog/blog.module').then(mod => mod.BlogModule)},
+  {path:'budget', loadChildren: () => import('./budget/budget.module').then(mod => mod.BudgetModule)},
+  {path:'authors', loadChildren: () => import('./authors/authors.module').then(mod => mod.AuthorsModule)},
+  {path:'404', loadChildren: () => import('./error/error.module').then(mod => mod.ErrorModule)},
+  {path:'**', pathMatch:'full' , component: ErrorComponent},
+  ];
 
 @NgModule({
   imports: [

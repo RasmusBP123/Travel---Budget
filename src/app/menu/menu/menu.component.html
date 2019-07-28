@@ -1,5 +1,36 @@
-<div class="topnav" style="padding-left: 10px">
-  <a href="#">Home</a>
-  <a routerLink="/budget" routerLinkActive="active">Budget</a>
-  <a routerLink="/travel" routerLinkActive="active">Rejser</a>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+<section (scroll)="onWindowScroll($event)"></section>
+
+<div class="main-container" id="navbar">
+    <div class="logo" id="piglet" style="visibility: hidden">
+        <img src="https://media.giphy.com/media/xT4uQ6x9Dq5lvGJUgE/giphy.gif">
+      </div>
+  <div class="main">
+    <div class="secondary">
+    <div class="menu-item"><a routerLink='/blog'>Main menu</a></div>
+    <div class="menu-item"><a routerLink='/budget'>Budget</a></div>
+    <div class="menu-item"><a routerLink='travel'>Travel</a></div>
+    <div class="menu-item"><a routerLink='/empty'>Login</a></div>
+    <div class="menu-item"><a routerLink='/empty'>Sign-up</a></div>
+      <div class="right-menu">
+      </div>
+      </div>
+  </div>
 </div>
+<div class="header-container" *ngIf="router.url == '/flex'">
+  <div class="header">
+    <div class="subscribe-container">
+    <div class="subscribe-grid">
+        <div class="subscribe-item" *ngFor="let section of sectionArr"><button>{{section}}</button></div>
+  </div>
+  </div>
+    <div class="title"><h2>Rasmus Bak</h2></div>
+    <div class="socialmedia">
+        <button class="addpost-button" routerLink='postadd'>Add post</button>
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-facebook"></i>
+      </div>
+  </div>
+</div>
+

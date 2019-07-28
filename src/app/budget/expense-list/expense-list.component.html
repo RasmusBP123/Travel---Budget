@@ -1,0 +1,36 @@
+<div class="budget-headline">
+    <h1>Budget</h1>
+  </div>
+
+<div class = "class-container"> 
+  <div class="side-nav-container">
+    <div class = "side-nav">
+      <h5 class="headline overview-h5">Overview</h5>
+      <button routerLink       = "/budget/add"
+              class            = "add-button">Add +
+      </button>
+      <p class = "total-cost">Total: {{ getTotalExpense() }} kr.</p>
+    </div>
+  </div>
+
+<div class="list-container">
+  <h5 class="headline">All expenses</h5>
+  <ol>
+    <cdk-virtual-scroll-viewport itemSize = "10" id="style-1">
+    <ng-container>
+    <li                          *cdkVirtualFor = "let expense of expenses"
+                                  class          = "list-item" >  
+    <button                      (click)        = "getExpenseDetailsFromService(expense.id)">
+            {{expense.id}} {{expense.name}} {{expense.cost}} kr.
+            </button></li>
+            </ng-container>
+        </cdk-virtual-scroll-viewport>
+  </ol>
+</div>
+
+  <app-details class="details-container"
+    [(expense)]     = "expense"
+    (expenseOutput) = "deleteExpenseClicked(expense.id)"
+    (expensePatch)  = "patchExpense(expense.id, expense)">
+  </app-details>
+</div>

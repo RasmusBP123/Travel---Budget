@@ -1,0 +1,91 @@
+.page-container{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding-top: 2%;
+    margin-top: 10%;
+}
+
+.page{
+    display: flex;
+    justify-content: center;
+    width: 65%;
+    padding: 2%;
+    color: #333;
+    letter-spacing: .03em;
+    line-height: 250%;
+}
+
+.posts-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.posts{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+}
+
+ol{
+    list-style: none;
+}
+
+.post{
+    width: 100%;
+    color: rgba(0, 0, 0, 0.54);
+    padding: 4% 2%;
+}
+
+.toptext-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.toptext-container a{
+    text-decoration: none;
+    outline: none;
+}
+
+.toptext-container h3{
+    font-size: 1.8rem;
+    color :rgba(0, 0, 0, 0.84);
+}
+
+.toptext-container p{
+    font-size: 0.8rem;
+    color :rgba(0, 0, 0, 0.84);
+}
+
+.image-container{
+    margin-right: 2%;
+}
+
+.image-container img{
+    width: 100px;
+    height: 100px;
+}
+
+.date-container{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    font-size: 0.5rem;
+}
+
+.date-container p{
+    font-style: italic;
+    color: #333;
+    font-size: 0.5rem;
+}
+
+.page p {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-font-smoothing: antialiased !important;
+    text-rendering: optimizelegibility !important;
+}
+

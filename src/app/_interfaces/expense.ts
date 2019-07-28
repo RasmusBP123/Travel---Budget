@@ -1,5 +1,5 @@
-export interface Expense{
-    id : number,
-    name : string,
-    cost : number,
+export class Expense{
+        id : number;
+        name : string;
+        cost : number;
 }

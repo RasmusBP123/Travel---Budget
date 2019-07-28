@@ -8,6 +8,13 @@
     background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);
 }
 
+img{
+    border-style: solid;
+    border-color: rgb(126, 123, 123);
+    transition: .6s ease; /* needs to be applied to the image and not the div */
+    backface-visibility: hidden;
+}
+
 .hero-text{
     font-size: 2em;
     text-align: center;
@@ -20,21 +27,39 @@
 
 .column{
     position: relative;
-    text-align: center;
-    color: white;
-    font-size: 3em;
-    flex: 33.33%;
-    padding: 5px;
-    max-width: 33.33%;
-    max-height: 33.33%;
+    flex: 33%;
+    padding: 4px;
+    max-width: 33%;
+    max-height: 33%;
+    opacity: 1;
+    display: block;
+}
+
+.column:hover img{
+    opacity: 0.5;
+    transform: scale(1.01);
+}
+
+.column:hover .text{
+    opacity: 1;
 }
 
 .text{
     position: absolute;
-    top: 70%;
+    overflow: hidden;
+    text-align: center;
+    white-space: nowrap;
+    top: 80%;
+    opacity: 0;
     left: 50%;
-    transform: translate(-50%, -50%)
-
+    background: grey;
+    border-radius: 8px;
+    color: white;
+    font-size: 12pt;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-left: 40%;
+    padding-right: 40%;
+    transform: translate(-50%, -50%);
 }
 
 .row::after {

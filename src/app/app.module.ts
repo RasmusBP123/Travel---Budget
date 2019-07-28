@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import * as _ from 'lodash';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms'
@@ -8,35 +10,38 @@ import { AppComponent } from './app.component';
 import { EnvironmentUrlService } from './Shared/services/environment-url.service';
 import { RepositoryService } from './Shared/services/repository.service';
 import { RouterModule } from '@angular/router';
-import { ExpenseListComponent } from './Expense/expense-list/expense-list.component';
 import { MenuComponent } from './menu/menu/menu.component';
 import { TravelComponent } from './travel/travel.component';
-import { FooterComponent } from './footer/footer.component';
-import { AddOrUpdateBudgetComponent } from './add-or-update-budget/add-or-update-budget.component';
+import { DetailsComponent } from './budget/details/details.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ErrorComponent } from './server500/error.component';
+import { LoaderInterceptorService } from './Shared/services/loader-interceptor.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ExpenseListComponent,
     MenuComponent,
     TravelComponent,
-    FooterComponent,
-    AddOrUpdateBudgetComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
+    ScrollingModule,
     HttpClientModule,
-    RouterModule.forRoot([
-      {path:'home', component: MenuComponent},
-      { path: 'budget', component: ExpenseListComponent },
-      { path: '', redirectTo: '/home', pathMatch: 'full' }
-    ]),
-    AppRoutingModule
+    RouterModule,
+    AppRoutingModule,
   ],
   providers: [
     EnvironmentUrlService,
-    RepositoryService
+    RepositoryService,
+    DetailsComponent,
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: LoaderInterceptorService,
+    multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

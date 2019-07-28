@@ -1,0 +1,39 @@
+<div class = "content-container">
+<div class = "content">
+      <h2>Write a brand new post</h2>
+      <h5>Be creative</h5>
+      <div  class            = "form">
+        <form #form (ngSubmit) = 'addPost()' autocomplete="off">
+          <div  class            = "headline-container">
+            <label>Headline</label>
+            <input #nameRef placeholder = "Headline.." [(ngModel)] = 'postModel.title' name="title" #title='ngModel' required>
+          </div>
+          <div *ngIf='title.touched && (!title.isvalid || !title.isDirty)'>
+              <div *ngIf='title.errors?.required' style = "color: red">
+                  Title is required
+              </div>
+          </div>
+              <div class = "textarea-container">
+                <label>What do you have on your mind?</label>
+                <textarea placeholder = "Type on me.."
+                          [(ngModel)] = 'postModel.textInput'
+                          name        = "textInput"
+                          #textInput  = 'ngModel'
+                          required minlength="10">
+                </textarea>
+                <div *ngIf='textInput.touched && (!textInput.isvalid || !textInput.isDirty)'>
+                <div *ngIf = 'textInput.errors?.required' style="color: red">
+                  this is required
+                </div>
+                <div *ngIf = 'textInput.errors?.minlength' style="color: red">
+                    it must be 10 characters atleast.
+                  </div>
+              </div>
+              </div>
+              <div    class = "create-button">
+              <button type  = "submit">Create Post</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>

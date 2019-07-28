@@ -1,0 +1,16 @@
+.notfound-container{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 500px;
+    margin-top: 1%;
+}
+
+.notfound{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

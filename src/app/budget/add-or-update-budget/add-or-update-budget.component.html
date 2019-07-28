@@ -1,0 +1,35 @@
+<div class="container">
+  <h2>Add A New Expense</h2>
+<form #form (ngSubmit)="createExpense()" autocomplete="off">
+  <div class="form-group">
+    <label>Name:</label>
+      <input type="text"
+       class="form-control" 
+       name="nameExpense"
+        [(ngModel)]="expenseModel.name"
+        #nameExpense = "ngModel" 
+        placeholder="Expense.."
+        required minlength="1">
+      <div *ngIf="nameExpense.invalid && (nameExpense.dirty || nameExpense.touched)" 
+      class="alert alert-danger">
+      <div *ngIf="nameExpense.errors.required">
+          Name is required
+      </div>
+      <div *ngIf="nameExpense.errors.minlength">
+          Name must be over 4 characthers
+      </div>
+      </div>
+     <label>Cost:</label>
+     <input type="number"
+      class="form-control"
+       name="costExpense" 
+       [(ngModel)]="expenseModel.cost"
+       placeholder="0"
+       required>
+  </div>
+  <div class="buttons">
+  <button type="submit" class="btn btn-success" style="float: left;">Save</button>
+  <button (click)="back()" class="btn btn-danger" style="float: right;">Back</button>
+</div>
+</form>
+</div>

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EnvironmentUrlService } from './environment-url.service';
+import { $ } from 'protractor';
 
 @Injectable()
 
@@ -10,38 +11,37 @@ import { EnvironmentUrlService } from './environment-url.service';
 export class RepositoryService {
 
   private headers : HttpHeaders;
-  private accessPointUrl = "http://localhost:53452/api/expense/";
 
   constructor(private http: HttpClient, private envURL: EnvironmentUrlService) {
-    this.headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'})
+    this.headers = new HttpHeaders({'Content-Type': 'application/json'})
   }
 
-  public getData(){
-    return this.http.get(this.accessPointUrl, {headers: this.headers});
+  public getData(accessPoint : string){
+    return this.http.get(accessPoint, {headers: this.headers});
   }
 
-/*   public getSingleData(route : string, id : number){
-    return this.http.get(this.accessPointUrl + '{{id}}', {headers: this.headers})
-  } */
+   public getSingleData(accessPoint : string, id : number){
+    return this.http.get(accessPoint + id, {headers: this.headers})
+  }
 
-  public create(payload : string){
-    return this.http.post(this.accessPointUrl,
+  public create(accessPoint : string, payload : any){
+    return this.http.post(accessPoint + 'create',
                           payload, 
-                          this.generateHeaders());
+                          {headers: this.headers});
   }
 
-  public update(route : string, body){
-    return this.http.put(this.createCompleteRoute(route, this.envURL.urlAdress),
-                          body, 
-                          this.generateHeaders());
+  public createPost(accessPoint : string, id : number, payload : any){
+    return this.http.post(`${accessPoint}/${id}/create`,
+                          payload, 
+                          {headers: this.headers});
   }
 
-  public delete(route : string){
-    return this.http.delete(this.createCompleteRoute(route, this.envURL.urlAdress));
+  public update(accessPoint : string, id : number, payload){
+    return this.http.patch(accessPoint + id, {headers : this.headers});
   }
 
-  private createCompleteRoute(route: string, envAddress: string): string {
-    return '${envAddress}/${route}'
+  public delete(accessPoint : string, id : number){
+    return this.http.delete(accessPoint + id, this.generateHeaders());
   }
 
   private generateHeaders(){
