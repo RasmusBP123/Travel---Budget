@@ -1,24 +1,18 @@
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-
-<section (scroll)="onWindowScroll($event)"></section>
-
-<div class="main-container" id="navbar">
-    <div class="logo" id="piglet" style="visibility: hidden">
-        <img src="https://media.giphy.com/media/xT4uQ6x9Dq5lvGJUgE/giphy.gif">
-      </div>
-  <div class="main">
-    <div class="secondary">
-    <div class="menu-item"><a routerLink='/blog'>Main menu</a></div>
-    <div class="menu-item"><a routerLink='/budget'>Budget</a></div>
-    <div class="menu-item"><a routerLink='travel'>Travel</a></div>
-    <div class="menu-item"><a routerLink='/empty'>Login</a></div>
-    <div class="menu-item"><a routerLink='/empty'>Sign-up</a></div>
-      <div class="right-menu">
-      </div>
-      </div>
+<div class="responsive">
+    <label for="toggle">&#9776;</label>
+    <input type="checkbox" id="toggle">
+    <div class="menu">
+      <a routerLink='/blog'>Main menu</a>
+      <a routerLink='/budget'>Budget</a>
+      <a routerLink='travel'>Travel</a>
+      <a routerLink='/auth/login'>Login</a>
+      <a routerLink='/empty'>Sign-up</a>
+    </div>
   </div>
-</div>
-<div class="header-container" *ngIf="router.url == '/flex'">
+
+<!-- This section is actually used in the blog component.. TODO: REFACTOR -->
+
+<div class="header-container" *ngIf="router.url == '/blog'">
   <div class="header">
     <div class="subscribe-container">
     <div class="subscribe-grid">

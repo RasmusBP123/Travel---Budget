@@ -17,6 +17,7 @@
                 <label>What do you have on your mind?</label>
                 <textarea placeholder = "Type on me.."
                           [(ngModel)] = 'postModel.textInput'
+                          ng-trim     = "false"
                           name        = "textInput"
                           #textInput  = 'ngModel'
                           required minlength="10">
